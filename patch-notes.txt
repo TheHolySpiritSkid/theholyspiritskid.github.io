@@ -1,0 +1,29 @@
+# Arche TV - Version 1.2 Patch Notes
+# Edit this file to update the patch notes shown on the download page
+# Format: [Section Name] followed by bullet points (- or •)
+
+[New Features]
+- Added profile search functionality - search for other users by name or email
+- Version update notification system - see what's new when you open the app
+- Patch notes viewer - automatically displays update information
+- Enhanced movie details page with more information
+- Improved video player controls
+
+[Bug Fixes]
+- Fixed search not returning results for some movie titles
+- Resolved email verification link expiration issues
+- Fixed watchlist not syncing properly
+- Corrected video playback issues on some devices
+- Fixed login session persistence
+
+[Improvements]
+- Faster movie loading times
+- Smoother animations and transitions
+- Better remote control navigation
+- Optimized image loading and caching
+- Enhanced UI responsiveness on large screens
+
+[Changes]
+- Updated TMDb API integration for better movie data
+- Redesigned install prompts for better visibility
+- Improved error handling and user feedback

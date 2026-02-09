@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download Arche TV - Version 1.2</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --purple-deep: #1a0a2e;
+            --purple-dark: #2d1b4e;
+            --purple-mid: #4a2c6d;
+            --purple-bright: #7c3aed;
+            --purple-accent: #a78bfa;
+            --purple-light: #c4b5fd;
+            --gold: #fbbf24;
+            --off-white: #f8f7ff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: linear-gradient(135deg, var(--purple-deep) 0%, var(--purple-dark) 50%, var(--purple-mid) 100%);
+            color: var(--off-white);
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+            animation: fadeInDown 0.8s ease;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--purple-accent), var(--purple-light), var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            color: var(--purple-light);
+            margin-bottom: 0.5rem;
+        }
+
+        .version {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--purple-bright), var(--purple-accent));
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .download-card {
+            background: linear-gradient(135deg, rgba(45, 27, 78, 0.6), rgba(74, 44, 109, 0.4));
+            border: 2px solid rgba(167, 139, 250, 0.3);
+            border-radius: 20px;
+            padding: 3rem;
+            margin-bottom: 2rem;
+            backdrop-filter: blur(10px);
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .download-card h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--gold);
+        }
+
+        .download-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .info-item {
+            background: rgba(124, 58, 237, 0.2);
+            padding: 1rem;
+            border-radius: 12px;
+            border: 1px solid rgba(167, 139, 250, 0.3);
+        }
+
+        .info-item label {
+            display: block;
+            color: var(--purple-accent);
+            font-size: 0.85rem;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .info-item span {
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.5rem 3rem;
+            background: linear-gradient(135deg, var(--gold), #f59e0b);
+            color: var(--purple-deep);
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(251, 191, 36, 0.4);
+        }
+
+        .download-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(251, 191, 36, 0.6);
+        }
+
+        .download-icon {
+            font-size: 2rem;
+        }
+
+        .patch-notes {
+            background: linear-gradient(135deg, rgba(45, 27, 78, 0.6), rgba(74, 44, 109, 0.4));
+            border: 2px solid rgba(167, 139, 250, 0.3);
+            border-radius: 20px;
+            padding: 3rem;
+            margin-bottom: 2rem;
+            backdrop-filter: blur(10px);
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+
+        .patch-notes h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: var(--purple-light);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .notes-section {
+            margin-bottom: 2rem;
+        }
+
+        .notes-section h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .notes-section ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .notes-section li {
+            padding: 0.8rem 0;
+            padding-left: 2rem;
+            position: relative;
+            line-height: 1.6;
+            font-size: 1.05rem;
+        }
+
+        .notes-section li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .bug-fix li::before {
+            content: '🔧';
+        }
+
+        .installation {
+            background: linear-gradient(135deg, rgba(45, 27, 78, 0.6), rgba(74, 44, 109, 0.4));
+            border: 2px solid rgba(167, 139, 250, 0.3);
+            border-radius: 20px;
+            padding: 3rem;
+            backdrop-filter: blur(10px);
+            animation: fadeInUp 1s ease 0.6s both;
+        }
+
+        .installation h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: var(--purple-light);
+        }
+
+        .install-step {
+            background: rgba(124, 58, 237, 0.2);
+            border: 1px solid rgba(167, 139, 250, 0.3);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .install-step h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            color: var(--purple-accent);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .step-number {
+            background: var(--purple-bright);
+            color: white;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .install-step p {
+            line-height: 1.8;
+            margin: 0;
+        }
+
+        .warning {
+            background: rgba(251, 191, 36, 0.1);
+            border: 2px solid var(--gold);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .warning h4 {
+            color: var(--gold);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .back-link {
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .back-link a {
+            color: var(--purple-accent);
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+
+        .back-link a:hover {
+            color: var(--gold);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="logo">ARCHE</h1>
+            <p class="subtitle">Download for Android TV</p>
+            <span class="version">Version 1.2</span>
+        </div>
+
+        <div class="download-card">
+            <h2>📥 Download APK</h2>
+            <div class="download-info">
+                <div class="info-item">
+                    <label>Version</label>
+                    <span id="app-version">1.2</span>
+                </div>
+                <div class="info-item">
+                    <label>File Size</label>
+                    <span>~15 MB</span>
+                </div>
+                <div class="info-item">
+                    <label>Release Date</label>
+                    <span id="release-date">Feb 10, 2026</span>
+                </div>
+                <div class="info-item">
+                    <label>Compatibility</label>
+                    <span>Android 5.0+</span>
+                </div>
+            </div>
+            <a href="arche-tv-v1.2.apk" class="download-btn" download>
+                <span class="download-icon">📱</span>
+                <span>Download Arche TV APK</span>
+            </a>
+        </div>
+
+        <div class="patch-notes">
+            <h2>📋 What's New in Version 1.2</h2>
+            <div id="patch-notes-content">
+                <!-- Patch notes will be loaded from patch-notes.txt -->
+                <p style="color: var(--purple-accent);">Loading patch notes...</p>
+            </div>
+        </div>
+
+        <div class="installation">
+            <h2>📺 Installation Instructions</h2>
+            
+            <div class="warning">
+                <h4>⚠️ Important: Enable Unknown Sources</h4>
+                <p>Before installing, you must enable "Unknown Sources" or "Install Unknown Apps" in your Android TV settings.</p>
+            </div>
+
+            <div class="install-step">
+                <h3><span class="step-number">1</span> Download the APK</h3>
+                <p>Click the download button above. The APK file will be saved to your device's Downloads folder.</p>
+            </div>
+
+            <div class="install-step">
+                <h3><span class="step-number">2</span> Enable Unknown Sources</h3>
+                <p>
+                    On your Android TV:<br>
+                    • Go to <strong>Settings</strong><br>
+                    • Navigate to <strong>Security & Restrictions</strong><br>
+                    • Enable <strong>Unknown Sources</strong> for your file manager or browser<br>
+                    • Or enable <strong>Install Unknown Apps</strong> and allow your browser
+                </p>
+            </div>
+
+            <div class="install-step">
+                <h3><span class="step-number">3</span> Install the APK</h3>
+                <p>
+                    • Open your <strong>File Manager</strong> or <strong>Downloads</strong> app<br>
+                    • Navigate to the Downloads folder<br>
+                    • Find <strong>arche-tv-v1.2.apk</strong><br>
+                    • Click on it and select <strong>Install</strong><br>
+                    • Wait for installation to complete
+                </p>
+            </div>
+
+            <div class="install-step">
+                <h3><span class="step-number">4</span> Launch Arche</h3>
+                <p>
+                    • Go to your apps menu<br>
+                    • Find the <strong>Arche</strong> app<br>
+                    • Click to launch<br>
+                    • Enjoy streaming! 🎬
+                </p>
+            </div>
+        </div>
+
+        <div class="back-link">
+            <a href="arche-streaming-full.html">← Back to Arche Streaming</a>
+        </div>
+    </div>
+
+    <script>
+        // Load patch notes from external file
+        async function loadPatchNotes() {
+            try {
+                const response = await fetch('patch-notes.txt');
+                const text = await response.text();
+                
+                // Parse the patch notes
+                const lines = text.split('\n');
+                let html = '';
+                let currentSection = '';
+                let currentList = [];
+                
+                for (let line of lines) {
+                    line = line.trim();
+                    if (!line || line.startsWith('#')) continue;
+                    
+                    if (line.startsWith('[') && line.endsWith(']')) {
+                        // Save previous section
+                        if (currentSection && currentList.length > 0) {
+                            html += createSection(currentSection, currentList);
+                            currentList = [];
+                        }
+                        currentSection = line.slice(1, -1);
+                    } else if (line.startsWith('-') || line.startsWith('•')) {
+                        currentList.push(line.substring(1).trim());
+                    }
+                }
+                
+                // Add last section
+                if (currentSection && currentList.length > 0) {
+                    html += createSection(currentSection, currentList);
+                }
+                
+                document.getElementById('patch-notes-content').innerHTML = html || '<p style="color: var(--purple-accent);">No patch notes available.</p>';
+            } catch (error) {
+                console.error('Error loading patch notes:', error);
+                document.getElementById('patch-notes-content').innerHTML = '<p style="color: var(--purple-accent);">Unable to load patch notes.</p>';
+            }
+        }
+
+        function createSection(title, items) {
+            const icons = {
+                'New Features': '✨',
+                'Bug Fixes': '🔧',
+                'Improvements': '⚡',
+                'Changes': '🔄'
+            };
+            
+            const icon = icons[title] || '📌';
+            const className = title === 'Bug Fixes' ? 'bug-fix' : '';
+            
+            let html = `<div class="notes-section ${className}">`;
+            html += `<h3>${icon} ${title}</h3>`;
+            html += '<ul>';
+            items.forEach(item => {
+                html += `<li>${item}</li>`;
+            });
+            html += '</ul></div>';
+            
+            return html;
+        }
+
+        // Load patch notes when page loads
+        document.addEventListener('DOMContentLoaded', loadPatchNotes);
+    </script>
+</body>
+</html>
